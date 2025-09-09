@@ -1,0 +1,33 @@
+services:
+  telegram-print-bot:
+    build:
+      context: .
+      args:
+        PRINTER_IP: "${PRINTER_IP:-192.168.1.100}"
+        PRINTER_NAME: "${PRINTER_NAME:-MyPrinter}"
+    image: telegram-print-bot
+    container_name: telegram-print-bot
+    environment:
+      # Telegram + bot settings
+      BOT_TOKEN: "${BOT_TOKEN}"
+      ALLOWED_USER_IDS: "${ALLOWED_USER_IDS:-675131465,473809527}"
+      MAX_FILE_MB: "${MAX_FILE_MB:-20}"
+      DEFAULT_MEDIA: "${DEFAULT_MEDIA:-A4}"
+      DUPLEX: "${DUPLEX:-one-sided}"
+      FIT_TO_PAGE: "${FIT_TO_PAGE:-true}"
+      SAVE_DIR: "${SAVE_DIR:-/data/incoming}"
+      ENABLE_LIBREOFFICE: "${ENABLE_LIBREOFFICE:-true}"
+      # Quiet hours
+      QUIET_START: "${QUIET_START:-22:30}"
+      QUIET_END: "${QUIET_END:-09:00}"
+      # Timezone
+      TZ: "${TZ:-UTC}"
+      # Localization
+      LANGUAGE_CODE: "${LANGUAGE_CODE:-uk}"
+      # Printer params
+      PRINTER_NAME: "${PRINTER_NAME:-MyPrinter}"
+      PRINTER_IP: "${PRINTER_IP:-192.168.1.100}"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

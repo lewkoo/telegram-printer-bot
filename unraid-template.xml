@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>telegram-print-bot</Name>
+  <Repository>ghcr.io/lewkoo/telegram-printer-bot:latest</Repository>
+  <Registry>https://ghcr.io/lewkoo/telegram-printer-bot</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/lewkoo/telegram-printer-bot</Support>
+  <Project>https://github.com/lewkoo/telegram-printer-bot</Project>
+  <Overview>
+    A modern Telegram bot that receives files and prints them wirelessly to your network printer.
+    
+    Features:
+    - Print PDFs, images, and Office documents via Telegram
+    - Quiet hours with automatic queuing
+    - Multi-language support (Ukrainian/English)
+    - Office document conversion (optional)
+    - User access control
+    - Network printer support via CUPS/IPP
+  </Overview>
+  <Category>HomeAutomation: Productivity: Tools:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/lewkoo/telegram-print-bot/main/unraid-template.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/lewkoo/telegram-print-bot/main/icons/telegram-print-bot.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1694256000</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Bot Token" Target="BOT_TOKEN" Default="" Mode="" Description="Telegram bot token from @BotFather (required)" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Printer IP" Target="PRINTER_IP" Default="192.168.1.100" Mode="" Description="Network printer IP address" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Printer Name" Target="PRINTER_NAME" Default="HP1200w" Mode="" Description="CUPS printer name" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Allowed User IDs" Target="ALLOWED_USER_IDS" Default="" Mode="" Description="Comma-separated Telegram user IDs (leave empty for no restriction)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Max File Size (MB)" Target="MAX_FILE_MB" Default="20" Mode="" Description="Maximum file size limit in MB" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Paper Size" Target="DEFAULT_MEDIA" Default="A4" Mode="" Description="Default paper size (A4, Letter, etc.)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Duplex Mode" Target="DUPLEX" Default="one-sided" Mode="" Description="Printing mode: one-sided, two-sided-long-edge, two-sided-short-edge" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Fit to Page" Target="FIT_TO_PAGE" Default="true" Mode="" Description="Scale content to fit page (true/false)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Quiet Hours Start" Target="QUIET_START" Default="22:30" Mode="" Description="Start of quiet hours (HH:MM format)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Quiet Hours End" Target="QUIET_END" Default="09:00" Mode="" Description="End of quiet hours (HH:MM format)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Timezone" Target="TZ" Default="UTC" Mode="" Description="Timezone for quiet hours (e.g., Europe/Kiev, America/New_York)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Enable LibreOffice" Target="ENABLE_LIBREOFFICE" Default="0" Mode="" Description="Enable Office document conversion (0=disabled, 1=enabled)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="WARNING" Mode="" Description="Logging verbosity (DEBUG, INFO, WARNING, ERROR)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/telegram-print-bot" Mode="rw" Description="Directory for storing files and queue data" Type="Path" Display="always" Required="true" Mask="false"/>
+</Container>
